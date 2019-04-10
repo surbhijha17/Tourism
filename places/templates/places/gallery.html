@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<br>
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/beach.jpg" style="height: 400px;width:100%;" >
+    </div>
+    <div class="carousel-item">
+      <img src="/static/barefoot.jpg" style="height: 400px;width:100%;" >
+    </div>
+    <div class="carousel-item">
+      <img src="/static/barrage.jpg" style="height: 400px;width:100%;"> 
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+<br>
+<br>
+<center>
+<div class="col-md-9 col-lg-9 col-sm-9">
+<div class="panel-body" >
+    <table class="table table-striped table-hover">
+
+                      <tr>
+                        <th>Places</th>
+                        <th>Action</th>
+
+                      </tr>
+                      {% for c in articles %}
+                      <tr>
+                      	<td>{{c.title}}</td>
+                        <td><a href="{% url 'gallery_byplaces' c.pk %}">View Gallery </a></td>
+
+                      </tr>
+
+                     {% endfor %}
+
+  </table>
+
+
+</div>
+</div>
+</center>
+{% endblock %}

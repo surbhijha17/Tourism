@@ -1,0 +1,54 @@
+ {% extends 'base.html'%}
+
+{% block content %}
+<br>
+<div class="blog">
+ <div class="container">
+ <h1 class="text-center" style="color:blue"> <u>{{articles.title}}</u></h1>
+
+ <div class="row">
+ {% for g  in gallery %}
+ 
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img src="{{g.pic.url}}" class="img-fluid">
+      
+     </div>
+     <div class="card-footer">
+      <small>{{g.name}}</small>
+     </div>
+     </div>
+   </div>
+     
+
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sss

@@ -1,0 +1,132 @@
+
+ {% extends 'base.html'%}
+  {% load static from staticfiles %}
+
+
+{% block content %}
+
+ 
+
+  <div class="my-parallax" data-parallax="scroll" data-z-index="2" data-image-src="/static/beach.jpg" id="about">
+    <div class="parallax-info" >
+  
+     <div class="description " >
+   <h1>    Hello ,Welcome To Durgapur Tourism
+    <p>    Durgapur  Tourism is one of the website for providing quality information related to the places ,restarants,shopping complexes in durgapur. 
+</p>   
+ 
+</div>
+   </div>
+ 
+</div>
+
+<section class="section section-light" id="blog_info">
+<div class="blog">
+ <div class="container">
+ <h1 class="text-center">Top Places in Durgapur  </h1>
+  <div class="row">
+   
+ {% for post in posts %}
+ 
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img src="{{post.thumb.url}}" class="img-fluid">
+      <span><h4>{{post.category}}</h4></span>
+     </div>
+     <div class="card-footer">
+      <small>Posted by : {{post.author}}</small>
+     </div>
+     
+     <div class="card-body">
+     <h4 class="card-title" ><a href="{% url 'places:details' post.pk %}">{{post.title}}</a></h4>
+      <p class="card-text">
+       {{post.body |truncatewords:20|safe }}
+     </p>
+    
+    </p>
+     </div>
+     <div class="card-footer">
+      <a href="{% url 'places:details' post.pk %}" class="card-link">Read more</a>
+     </div>
+    </div>
+   </div>
+
+
+{% endfor %}
+  
+  </div>
+ </div>
+</div>
+</section>
+ <div class="my-parallax-body" data-parallax="scroll" data-z-index="2" data-image-src="/static/barefoot.jpg">
+    
+</div>
+<!-- Team section -->
+<section class="section section-dark" id="team_info">
+<div class="team">
+ <div class="container">
+    <h1 class="text-center">Our Team</h1>
+  <div class="row">
+   <div class="col-lg-3 col-md-3 col-sm-12 item">
+    <img src="/static/surbhi.jpeg" class="img-fluid" alt="team">
+    <div class="des">
+      Sameeksha Keshari
+     </div>
+    <span class="text-muted">Frontend & Backend Developer </span>
+   </div>
+   <div class="col-lg-3 col-md-3 col-sm-12 item">
+    <img src="/static/surbhi.jpeg" class="img-fluid" alt="team">
+    <div class="des">
+      Surbhi Suman
+     </div>
+    <span class="text-muted">Frontend & Backend Developer</span>
+   </div>
+   <div class="col-lg-3 col-md-3 col-sm-12 item">
+    <img src="/static/surbhi.jpeg" class="img-fluid" alt="team">
+    <div class="des">
+     Swapnil Pandey
+     </div>
+    <span class="text-muted">Blog writer</span>
+   </div>
+   <div class="col-lg-3 col-md-3 col-sm-12 item">
+    <img src="/static/surbhi.jpeg" class="img-fluid" alt="team">
+     <div class="des">
+      Swapnil Pandey
+     </div>
+    <span class="text-muted">Team Manger</span>
+   </div>
+  </div>
+ </div>
+</div>
+</section>
+ <div class="my-parallax" data-parallax="scroll" data-z-index="2" data-image-src="/static/beach.jpg">
+  
+ </div>
+<!-- Contact form -->
+<section class="section section-light">
+<div class="contact-form">
+ <div class="container">
+  <form method="POST">
+   <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h1>Get in Touch</h1> 
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 right">
+       <div class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        </div>
+       <input type="submit" class="btn btn-secondary btn-block" value="Send" name="">
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
+</section>
+
+
+  
+
+
+{% endblock %}
